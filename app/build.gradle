@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.lostheep.cleanarchitectureexample"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+def support_library_version = '27.1.0'
+def retrofit_library_version = '2.3.0'
+def moxy_library_version = '1.5.3'
+def glide_library_version = '4.7.1'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:' + support_library_version
+    implementation 'com.android.support:support-v4:' + support_library_version
+    implementation 'com.android.support:design:' + support_library_version
+    implementation 'com.android.support:recyclerview-v7:' + support_library_version
+    implementation 'com.android.support:palette-v7:' + support_library_version
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:' + retrofit_library_version
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:' + retrofit_library_version
+    implementation 'com.squareup.retrofit2:converter-jackson:' + retrofit_library_version
+    implementation 'com.squareup.retrofit2:converter-scalars:' + retrofit_library_version
+    implementation 'com.squareup.retrofit2:converter-simplexml:' + retrofit_library_version
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // rxandroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
+    implementation 'com.jakewharton.rxbinding:rxbinding-kotlin:0.4.0'
+
+    //moxy
+    implementation 'com.arello-mobile:moxy:' + moxy_library_version
+    implementation 'com.arello-mobile:moxy-app-compat:' + moxy_library_version
+    kapt 'com.arello-mobile:moxy-compiler:' + moxy_library_version
+
+    //cicerone
+    implementation 'ru.terrakok.cicerone:cicerone:1.2.1'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:' + glide_library_version
+    annotationProcessor 'com.github.bumptech.glide:compiler:' + glide_library_version
+
+    //Circle Image.
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //Circle progress
+    implementation 'com.github.rey5137:material:1.2.4'
+}
